@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+</head>
+<body>
+    <h1>Hobilerim ve Haritam</h1>
+    <div id="map" style="height: 400px;"></div>
+    <script>
+        var map = L.map('map').setView([39.93, 32.85], 10); // Ankara koordinatları
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+    </script>
+</body>
+</html>
