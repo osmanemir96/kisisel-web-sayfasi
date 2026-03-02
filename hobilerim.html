@@ -1,16 +1,19 @@
 <script>
-    var map = L.map('map').setView([39.93, 32.85], 6); // Başlangıç noktası Ankara (Türkiye'yi görecek kadar uzaklaştırdık)
+    // Haritayı Türkiye merkezli başlatıyoruz
+    var map = L.map('map').setView([39.0, 35.0], 6);
+    
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
 
-    // Eğitim, İş ve Seyahat Noktaların
-    var locations = [
-        {coords: [39.93, 32.85], name: "Ankara (Eğitim & Yaşam)"},
-        {coords: [41.00, 28.97], name: "İstanbul (Seyahat)"},
-        {coords: [38.42, 27.14], name: "İzmir (Seyahat)"},
-        {coords: [41.37, 33.77], name: "Kastamonu (Seyahat)"}
+    // Kendi verilerini buraya ekle (İstediğin kadar şehir ekleyebilirsin)
+    var noktalar = [
+        {coords: [39.9334, 32.8597], info: "Ankara - Eğitim ve İş"},
+        {coords: [41.0082, 28.9784], info: "İstanbul - Seyahat"},
+        {coords: [38.4237, 27.1428], info: "İzmir - Seyahat"},
+        {coords: [41.3785, 33.7765], info: "Kastamonu - Seyahat"}
     ];
 
-    locations.forEach(function(loc) {
-        L.marker(loc.coords).addTo(map).bindPopup(loc.name);
+    // Bu döngü her bir nokta için haritaya bir "pin" (işaretçi) koyar
+    noktalar.forEach(function(nokta) {
+        L.marker(nokta.coords).addTo(map).bindPopup(nokta.info);
     });
 </script>
