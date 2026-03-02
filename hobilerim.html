@@ -1,19 +1,28 @@
-<script>
-    // Haritayı Türkiye merkezli başlatıyoruz
-    var map = L.map('map').setView([39.0, 35.0], 6);
-    
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <style> #map { height: 500px; width: 80%; margin: auto; border: 5px solid #fff; box-shadow: 0 0 10px rgba(0,0,0,0.3); } </style>
+</head>
+<body>
+    <h1>Gezi ve Çalışma Noktalarım</h1>
+    <div id="map"></div>
+    <script>
+        var map = L.map('map').setView([39.0, 35.0], 6);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
 
-    // Kendi verilerini buraya ekle (İstediğin kadar şehir ekleyebilirsin)
-    var noktalar = [
-        {coords: [39.9334, 32.8597], info: "Ankara - Eğitim ve İş"},
-        {coords: [41.0082, 28.9784], info: "İstanbul - Seyahat"},
-        {coords: [38.4237, 27.1428], info: "İzmir - Seyahat"},
-        {coords: [41.3785, 33.7765], info: "Kastamonu - Seyahat"}
-    ];
+        var noktalar = [
+            [[39.9334, 32.8597], "Ankara: Eğitim ve İş"],
+            [[41.0082, 28.9784], "İstanbul: Seyahat"],
+            [[38.4237, 27.1428], "İzmir: Seyahat"],
+            [[41.3785, 33.7765], "Kastamonu: Seyahat"]
+        ];
 
-    // Bu döngü her bir nokta için haritaya bir "pin" (işaretçi) koyar
-    noktalar.forEach(function(nokta) {
-        L.marker(nokta.coords).addTo(map).bindPopup(nokta.info);
-    });
-</script>
+        noktalar.forEach(function(n) {
+            L.marker(n[0]).addTo(map).bindPopup(n[1]);
+        });
+    </script>
+</body>
+</html>
